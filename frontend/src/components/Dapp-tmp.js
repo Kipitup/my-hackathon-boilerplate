@@ -51,7 +51,7 @@ const DappTmp = () => {
   useEffect(() => {
     const pollDataInterval = setInterval(() => _updateBalance(), 1000);
 
-    // this will be called when component unmount
+    // this will be called when component unmount.
     return () => clearInterval(pollDataInterval);
   }, [])
 
