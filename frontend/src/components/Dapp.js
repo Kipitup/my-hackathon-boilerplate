@@ -243,72 +243,66 @@ const Dapp = () => {
 
   // If everything is loaded, we render the application.
   return (
-    <div className="container p-4">
-      <div className="row">
-        <div className="col-12">
-          <h1>
-            {tokenData.name} ({tokenData.symbol})
-          </h1>
-          <p>
-            Welcome <b>{userAddress}</b>, you have{" "}
-            <b>
-              {balance.toString()} {tokenData.symbol}
-            </b>
-            .
-          </p>
-        </div>
+    <div className="flex flex-col justify-center items-start ml-12">
+      <div className="mt-8">
+        <h1 className="text-5xl mb-2">
+          {tokenData.name} ({tokenData.symbol})
+        </h1>
+        <p>
+          Welcome <b>{userAddress}</b>, you have{" "}
+          <b>
+            {balance.toString()} {tokenData.symbol}
+          </b>
+          .
+        </p>
       </div>
 
       <hr />
 
-      <div className="row">
-        <div className="col-12">
-          {/* 
-            Sending a transaction isn't an immidiate action. You have to wait
-            for it to be mined.
-            If we are waiting for one, we show a message here.
-          */}
-          {txBeingSent && (
-            <WaitingForTransactionMessage txHash={txBeingSent} />
-          )}
+      <div className="pt-4">
+        {/* 
+          Sending a transaction isn't an immidiate action. You have to wait
+          for it to be mined.
+          If we are waiting for one, we show a message here.
+        */}
+        {txBeingSent && (
+          <WaitingForTransactionMessage txHash={txBeingSent} />
+        )}
 
-          {/* 
-            Sending a transaction can fail in multiple ways. 
-            If that happened, we show a message here.
-          */}
-          {transactionError && (
-            <TransactionErrorMessage
-              message={_getRpcErrorMessage(transactionError)}
-              dismiss={() => _dismissTransactionError()}
-            />
-          )}
-        </div>
+        {/* 
+          Sending a transaction can fail in multiple ways. 
+          If that happened, we show a message here.
+        */}
+        {transactionError && (
+          <TransactionErrorMessage
+            message={_getRpcErrorMessage(transactionError)}
+            dismiss={() => _dismissTransactionError()}
+          />
+        )}
       </div>
 
-      <div className="row">
-        <div className="col-12">
-          {/*
-            If the user has no tokens, we don't show the Tranfer form
-          */}
-          {balance.eq(0) && (
-            <NoTokensMessage userAddress={userAddress} />
-          )}
+      <div className="pt-4 w-6/12">
+        {/*
+          If the user has no tokens, we don't show the Tranfer form
+        */}
+        {balance.eq(0) && (
+          <NoTokensMessage userAddress={userAddress} />
+        )}
 
-          {/*
-            This component displays a form that the user can use to send a 
-            transaction and transfer some tokens.
-            The component doesn't have logic, it just calls the transferTokens
-            callback.
-          */}
-          {balance.gt(0) && (
-            <Transfer
-              transferTokens={(to, amount) =>
-                _transferTokens(to, amount)
-              }
-              tokenSymbol={tokenData.symbol}
-            />
-          )}
-        </div>
+        {/*
+          This component displays a form that the user can use to send a 
+          transaction and transfer some tokens.
+          The component doesn't have logic, it just calls the transferTokens
+          callback.
+        */}
+        {balance.gt(0) && (
+          <Transfer
+            transferTokens={(to, amount) =>
+              _transferTokens(to, amount)
+            }
+            tokenSymbol={tokenData.symbol}
+          />
+        )}
       </div>
     </div>
   );

@@ -6,8 +6,8 @@ require("@nomiclabs/hardhat-waffle");
 require("./tasks/faucet");
 
 module.exports = {
-  solidity: "0.7.3",
-  solidity: "0.7.3",
+  solidity: "0.8.3",
+  solidity: "0.8.3",
   networks: {
     hardhat: {
       chainId: 1337

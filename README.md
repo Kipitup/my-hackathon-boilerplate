@@ -1,9 +1,11 @@
 # Hackathon Boilerplate for Web3
 
 This is a fork from 
-[Hardhat Hackathon Boilerplate](https://hardhat.org/tutorial/hackathon-boilerplate-project.html).\
-The main difference is that I updated the React to use **hooks** instead of Class.
-Both a fine, I just like hooks better.
+[Hardhat Hackathon Boilerplate](https://hardhat.org/tutorial/hackathon-boilerplate-project.html).
+
+What's the difference :
+- I updated the React to use **hooks** instead of Class. Both a fine, I just like hooks better.
+- I removed bootstrap css and plugged in Tailwindcss. Also a personal choice
 
 
 This repository contains a sample project that you can use as the starting point
